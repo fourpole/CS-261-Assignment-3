@@ -89,7 +89,7 @@ class Stack:
         """
 
         if self._head is None:
-            return StackException
+            raise StackException
 
         ret_val = self._head.value
         self._head = self._head.next
@@ -103,7 +103,7 @@ class Stack:
         """
 
         if self._head is None:
-            return StackException
+            raise StackException
 
         return self._head.value
 
