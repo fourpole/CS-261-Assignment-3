@@ -1,10 +1,12 @@
-# Name:
-# OSU Email:
+# Name: Brian Walsh
+# OSU Email: walsbria@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
-
+# Assignment: 3
+# Due Date: 7/24/23
+# Description: Implements a stack ADT using a dynamic array. In this
+# implementation, the end of the array is the top of the stack. Methods are
+# provided to push, pop, and peek, as well as find size and if the stack
+# is empty.
 
 from dynamic_array import *
 
@@ -52,7 +54,7 @@ class Stack:
 
     def push(self, value: object) -> None:
         """
-        Appends a value to the array, which represents the top of the stack
+        Pushes a value to the top of the stack.
 
         Param value:    value to put on the stack
         Return:         nothing
@@ -62,15 +64,27 @@ class Stack:
 
     def pop(self) -> object:
         """
-        TODO: Write this implementation
+        Returns the value at the top of the stack, and removes it.
+
+        Param:      none
+        Returns:    value at the top of the stack
         """
-        pass
+
+        ret_val = self._da.get_at_index(self.size() - 1)
+        self._da.remove_at_index(self.size() - 1)
+        return ret_val
 
     def top(self) -> object:
         """
-        TODO: Write this implementation
+        Returns the value at the top of the stack. This method does not
+        modify the stack.
+
+        Param:      none
+        Returns:    value at the top of the stack
         """
-        pass
+
+        return self._da.get_at_index(self.size() - 1)
+
 
 
 # ------------------- BASIC TESTING -----------------------------------------
