@@ -196,7 +196,7 @@ class LinkedList:
 
         if start_index < 0 or start_index > self.length():
             raise SLLException
-        if size > self.length() - start_index:
+        if size > self.length() - start_index or size < 0:
             raise SLLException
 
         return_list = LinkedList()
