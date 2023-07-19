@@ -88,7 +88,7 @@ class Stack:
         returns:    nothing
         """
 
-        if self.size() == 0:
+        if self._head is None:
             return StackException
 
         ret_val = self._head.value
@@ -102,7 +102,7 @@ class Stack:
         the list.
         """
 
-        if self.size() == 0:
+        if self._head is None:
             return StackException
 
         return self._head.value
