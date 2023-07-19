@@ -70,6 +70,9 @@ class Stack:
         Returns:    value at the top of the stack
         """
 
+        if self.size() == 0:
+            raise StackException
+
         ret_val = self._da.get_at_index(self.size() - 1)
         self._da.remove_at_index(self.size() - 1)
         return ret_val
@@ -82,6 +85,9 @@ class Stack:
         Param:      none
         Returns:    value at the top of the stack
         """
+
+        if self.size() == 0:
+            raise StackException
 
         return self._da.get_at_index(self.size() - 1)
 
