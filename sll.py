@@ -106,14 +106,12 @@ class LinkedList:
         Returns:        nothing
         """
 
-        if index < 0:
+        if index < 0 or index > self.length():
             raise SLLException
 
         new_node = SLNode(value)
         node = self._head
         for i in range(index):
-            if node.next is None:
-                raise SLLException
             node = node.next
 
         new_node.next = node.next
@@ -127,13 +125,12 @@ class LinkedList:
         Param index:    index to remove from the list
         Returns:        nothing
         """
-        if index < 0:
+        if index < 0 or index >= self.length():
             raise SLLException
+
 
         node = self._head
         for i in range(index):
-            if node.next.next is None:
-                raise SLLException
             node = node.next
 
         node.next = node.next.next
