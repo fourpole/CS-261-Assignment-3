@@ -194,7 +194,7 @@ class LinkedList:
         Param size:             how many successive values to return
         """
 
-        if start_index < 0 or start_index > self.length():
+        if start_index < 0 or start_index >= self.length():
             raise SLLException
         if size > self.length() - start_index or size < 0:
             raise SLLException
