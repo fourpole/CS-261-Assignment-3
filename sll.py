@@ -194,7 +194,7 @@ class LinkedList:
         Param size:             how many successive values to return
         """
 
-        if start_index < 0:
+        if start_index < 0 or start_index > self.length():
             raise SLLException
 
         return_list = LinkedList()
@@ -207,8 +207,6 @@ class LinkedList:
         # save node.value to the return list and move to the next node
         # if value = None we have reached the end of the list
         for j in range(size):
-            if node is None:
-                raise SLLException
             return_list.insert_back(node.value)
             node = node.next
 
