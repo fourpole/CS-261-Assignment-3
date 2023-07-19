@@ -1,9 +1,13 @@
-# Name:
-# OSU Email:
+# Name: Brian Walsh
+# OSU Email: walsbria@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
+# Assignment: 3
+# Due Date: 7/24/23
+# Description: Implements a singly linked list. Methods are provided to return
+# insert or remove at the front, back, or a specific index, remove the first
+# instance of a value, count the occurrences of a value, search for a value,
+# return the length, return whether the list is empty, and return a slice of
+# the list.
 
 
 from SLNode import *
@@ -69,51 +73,151 @@ class LinkedList:
 
     def insert_front(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        Inserts a node at the front of the linked list.
+
+        Param value:    value to assign to the node
+        Returns:        nothing
         """
-        pass
+
+        new_node = SLNode(value, self._head.next)
+        self._head.next = new_node
 
     def insert_back(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        Inserts a node at the end of the linked list.
+
+        Param value:    value to assign to the node
+        Returns:        nothing
         """
-        pass
+
+        new_node = SLNode(value)
+        # find the end of the list where node.next = None
+        node = self._head
+        while node.next is not None:
+            node = node.next
+        node.next = new_node
 
     def insert_at_index(self, index: int, value: object) -> None:
         """
-        TODO: Write this implementation
+        Inserts a node at the specified index.
+
+        Param value:    value to assign to the node
+        Param index:    where to insert in the list
+        Returns:        nothing
         """
-        pass
+
+        if index < 0:
+            raise SLLException
+
+        new_node = SLNode(value)
+        node = self._head
+        for i in range(index):
+            if node.next is None:
+                raise SLLException
+            node = node.next
+
+        new_node.next = node.next
+        node.next = new_node
 
     def remove_at_index(self, index: int) -> None:
         """
-        TODO: Write this implementation
+        Removes a node at the specified index.
+
+        Param value:    value to assign to the node
+        Param index:    index to remove from the list
+        Returns:        nothing
         """
-        pass
+        if index < 0:
+            raise SLLException
+
+        node = self._head
+        for i in range(index):
+            if node.next.next is None:
+                raise SLLException
+            node = node.next
+
+        node.next = node.next.next
 
     def remove(self, value: object) -> bool:
         """
-        TODO: Write this implementation
+        Removes the first occurrence of a node with the specified value.
+        Returns True if a node is removed, False otherwise.
+
+        Param value:    value to assign to the node
+        Returns:        True if value removed, False otherwise
         """
-        pass
+
+        node = self._head
+        while node.next is not None:
+            if node.next.value == value:
+                node.next = node.next.next
+                return True
+            node = node.next
+
+        return False
 
     def count(self, value: object) -> int:
         """
-        TODO: Write this implementation
+        Returns the occurrences of value in the list.
+
+        Param value:    the value to count
+        Returns:        the number of occurrences
         """
-        pass
+
+        count = 0
+        node = self._head
+        while node.next is not None:
+            if node.next.value == value:
+                count += 1
+            node = node.next
+
+        return count
 
     def find(self, value: object) -> bool:
         """
-        TODO: Write this implementation
+        Returns True if the value exists in the list. Returns False otherwise
+
+        Param value:    The value to find
+        Returns:        True if found, False if not
         """
-        pass
+
+        node = self._head
+        while node.next is not None:
+            if node.next.value == value:
+                return True
+            node = node.next
+
+        return False
 
     def slice(self, start_index: int, size: int) -> "LinkedList":
         """
-        TODO: Write this implementation
+        Returns a LinkedList object containing a slice of the original list.
+
+        Param start_index:      the index to start the slice at
+        Param size:             how many successive values to return
         """
-        pass
+
+        if start_index < 0:
+            raise SLLException
+
+        return_list = LinkedList()
+        node = self._head
+
+        # move to the starting index
+        for i in range(start_index + 1):
+            node = node.next
+
+        # save node.value to the return list and move to the next node
+        # if value = None we have reached the end of the list
+        for j in range(size):
+            if node is None:
+                raise SLLException
+            return_list.insert_back(node.value)
+            node = node.next
+
+        return return_list
+
+
 
 
 if __name__ == "__main__":
