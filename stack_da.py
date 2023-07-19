@@ -52,9 +52,13 @@ class Stack:
 
     def push(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        Appends a value to the array, which represents the top of the stack
+
+        Param value:    value to put on the stack
+        Return:         nothing
         """
-        pass
+
+        self._da.append(value)
 
     def pop(self) -> object:
         """
