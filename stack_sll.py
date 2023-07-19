@@ -1,9 +1,12 @@
-# Name:
-# OSU Email:
+# Name: Brian Walsh
+# OSU Email: walsbria@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
+# Assignment: 3
+# Due Date: 7/24/23
+# Description: Implements a stack ADT using a singly linked list. In this
+# implementation, the head of the list is the top of the stack. Methods are
+# provided to push, pop, and peek, as well as find size and if the stack
+# is empty.
 
 
 from SLNode import SLNode
@@ -63,21 +66,46 @@ class Stack:
 
     def push(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        Inserts a node with value at the head of the linked list.
+
+        param value:    the value to store in the list
+        returns:        nothing
         """
-        pass
+
+        new_node = SLNode(value)
+
+        if self._head is None:
+            self._head = new_node
+        else:
+            new_node.next = self._head
+            self._head = new_node
 
     def pop(self) -> object:
         """
-        TODO: Write this implementation
+        Returns the value at the head of the linked list and removes it.
+
+        param:      nothing
+        returns:    nothing
         """
-        pass
+
+        if self.size() == 0:
+            return StackException
+
+        ret_val = self._head.value
+        self._head = self._head.next
+        return ret_val
+
 
     def top(self) -> object:
         """
-        TODO: Write this implementation
+        Returns the value at the head of the list. This method does not modify
+        the list.
         """
-        pass
+
+        if self.size() == 0:
+            return StackException
+
+        return self._head.value
 
 # ------------------- BASIC TESTING -----------------------------------------
 

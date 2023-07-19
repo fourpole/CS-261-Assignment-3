@@ -3,11 +3,11 @@
 # Course: CS261 - Data Structures
 # Assignment: 3
 # Due Date: 7/24/23
-# Description: Implements a singly linked list. Methods are provided to return
-# insert or remove at the front, back, or a specific index, remove the first
-# instance of a value, count the occurrences of a value, search for a value,
-# return the length, return whether the list is empty, and return a slice of
-# the list.
+# Description: Implements a singly linked list. Methods are provided to
+# insert at the front, back, or a specific index, remove at an index, remove
+# the first instance of a value, count the occurrences of a value, search for
+# a value, return the length, return whether the list is empty, and return a
+# slice of the list.
 
 
 from SLNode import *
