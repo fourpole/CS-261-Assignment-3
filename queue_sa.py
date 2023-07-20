@@ -74,11 +74,12 @@ class Queue:
         returns:        nothing
         """
 
+        if self._current_size == self._sa.length():
+            self._double_queue()
         self._back = self._increment(self._back)
         self._sa[self._back] = value
         self._current_size += 1
-        if self._current_size == self._sa.length():
-            self._double_queue()
+
 
     def dequeue(self) -> object:
         """
@@ -116,6 +117,8 @@ class Queue:
             new_sa[i] = self._sa[self._front]
             self._front = self._increment(self._front)
         self._sa = new_sa
+        self._front = 0
+        self._back = self._current_size - 1
 
 
 # ------------------- BASIC TESTING -----------------------------------------
