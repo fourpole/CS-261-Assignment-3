@@ -1,9 +1,10 @@
-# Name:
-# OSU Email:
+# Name: Brian Walsh
+# OSU Email: walsbria@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
+# Assignment: 3
+# Due Date: 7/24/23
+# Description: Implements a queue ADT using a static array.  Methods are
+# provided to enqueue, dequeue, and return the first value.
 
 
 # Note: Changing any part of the pre-implemented methods (besides adding  #
@@ -74,12 +75,13 @@ class Queue:
         returns:        nothing
         """
 
+        # if array is full, increase its size before continuing
         if self._current_size == self._sa.length():
             self._double_queue()
+
         self._back = self._increment(self._back)
         self._sa[self._back] = value
         self._current_size += 1
-
 
     def dequeue(self) -> object:
         """
@@ -103,14 +105,12 @@ class Queue:
 
         return self._sa[self._front]
 
-
-    # The method below is optional, but recommended, to implement. #
-    # You may alter it in any way you see fit.                     #
-
     def _double_queue(self) -> None:
         """
-        TODO: Write this implementation
+        Doubles the array. Copies the old array to the new one and re-indexes
+        self._front to index 0 in the new array to unwind the circular buffer.
         """
+
         new_sa = StaticArray(self._current_size * 2)
         i = 0
         for i in range(self._sa.length()):
