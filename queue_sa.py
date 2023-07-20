@@ -68,21 +68,40 @@ class Queue:
 
     def enqueue(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        Inserts a value at the end of the array.
+
+        param value:    value to add to the array
+        returns:        nothing
         """
-        pass
+
+        self._back = self._increment(self._back)
+        self._sa[self._back] = value
+        self._current_size += 1
+        if self._current_size == self._sa.length():
+            self._double_queue()
 
     def dequeue(self) -> object:
         """
-        TODO: Write this implementation
+        Returns the first value of the queue and moves the front index
         """
-        pass
+
+        if self._current_size == 0:
+            raise QueueException
+
+        ret_val = self._sa[self._front]
+        self._front = self._increment(self._front)
+        self._current_size -= 1
+        return ret_val
 
     def front(self) -> object:
         """
-        TODO: Write this implementation
+        Returns the first value in the queue
         """
-        pass
+        if self._current_size == 0:
+            raise QueueException
+
+        return self._sa[self._front]
+
 
     # The method below is optional, but recommended, to implement. #
     # You may alter it in any way you see fit.                     #
@@ -91,7 +110,12 @@ class Queue:
         """
         TODO: Write this implementation
         """
-        pass
+        new_sa = StaticArray(self._current_size * 2)
+        i = 0
+        for i in range(self._sa.length()):
+            new_sa[i] = self._sa[self._front]
+            self._front = self._increment(self._front)
+        self._sa = new_sa
 
 
 # ------------------- BASIC TESTING -----------------------------------------
