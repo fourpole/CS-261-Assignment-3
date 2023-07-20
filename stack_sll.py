@@ -74,7 +74,7 @@ class Stack:
 
         new_node = SLNode(value)
 
-        if self._head is None:
+        if not self._head:
             self._head = new_node
         else:
             new_node.next = self._head
@@ -88,7 +88,7 @@ class Stack:
         returns:    nothing
         """
 
-        if self._head is None:
+        if not self._head:
             raise StackException
 
         ret_val = self._head.value
