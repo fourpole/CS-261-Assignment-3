@@ -1,9 +1,11 @@
-# Name:
-# OSU Email:
+# Name: Brian Walsh
+# OSU Email: walsbria@oregonstate.edu
 # Course: CS261 - Data Structures
-# Assignment:
-# Due Date:
-# Description:
+# Assignment: 3
+# Due Date: 7/24/13
+# Description: Implements a queue using a singly linked list. Includes methods
+# to enqueue, dequeue, and return the value of the first member. In this
+# implementation, the beginning of the line is the front of the list.
 
 
 from SLNode import SLNode
@@ -64,21 +66,50 @@ class Queue:
 
     def enqueue(self, value: object) -> None:
         """
-        TODO: Write this implementation
+        Adds a value to the end of the list.
+
+        param value:    the value to add
+        return:         nothing
         """
-        pass
+
+        new_node = SLNode(value)
+
+        # if this is the first node, add it and initialize the sentinels
+        if self._head is None and self._tail is None:
+            self._head = new_node
+            self._tail = new_node
+
+        # add to the end and move the sentinel pointer
+        else:
+            self._tail.next = new_node
+            self._tail = new_node
 
     def dequeue(self) -> object:
         """
-        TODO: Write this implementation
+        Removes and returns the first value in the list
+
+        param:      nothing
+        return:     the first value in the list
         """
-        pass
+        if not self._head:
+            raise QueueException
+
+        ret_val = self._head.value
+        self._head = self._head.next
+        return ret_val
 
     def front(self) -> object:
         """
-        TODO: Write this implementation
+        Returns the first value in the list.
+
+        param:      nothing
+        return:     the first value in the list
         """
-        pass
+        if not self._head:
+            raise QueueException
+
+        return self._head.value
+
 
 
 # ------------------- BASIC TESTING -----------------------------------------
